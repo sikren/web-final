@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="profile-info">
+        <p class="username-label"> Username: {{ current_user.username }} </p>
+        <a href="/edit_profile" class="btn btn-dark edit-btn"> Edit </a>
+        {% if current_user.photo != None %}
+            <img class="profile-img" src="data:image/jpg;base64,{{ current_user.photo }}">
+        {% else %}
+            <img class="profile-img" src="{{ url_for('static', filename='img/empty_image.png') }}">
+        {% endif %}
+        <div class="about-wrap">
+            <p class="about"> <b>About:</b> {{ current_user.about }} </p>
+        </div>
+        <p class="email"> <b>Email:</b> {{ current_user.email }}</p>
+
+        <p class="offers-label"> <b> Your Offers List </b> </p>
+
+        <div class="tags-list user-tags">
+            {% for tag in user_tags %}
+                <div class="tag-info col-md6 border rounded">
+                    <h2 class="tag-title"> {{ loop.index }}. {{ tag.title }} </h2>
+                    {% if tag.description != None %}
+                        <div class="tag-description">
+                            Info: {{ tag.description }}
+                        </div>
+                    {% endif %}
+                    <a class="btn btn-dark right-center" href="offer/{{ tag.id }}"> GO TO </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

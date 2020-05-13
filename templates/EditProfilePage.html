@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<p class="error-message"> {{ message }} </p>
+    <form action="" method="post">
+
+        {{ form.hidden_tag() }}
+        {{ form.csrf_token }}
+
+        <div class="profile-info">
+            <p class="username-label"> Username: {{ form.username(class="username-placeholder", placeholder=current_user.username) }} </p>
+            <button type="submit" class="btn btn-dark edit-btn"> Submit </button>
+            {% if current_user.photo != None %}
+                <img class="profile-img" src="data:image/jpg;base64,{{ current_user.photo }}">
+            {% else %}
+                <img class="profile-img" src="{{ url_for('static', filename='img/empty_image.png') }}">
+            {% endif %}
+            <div class="about-wrap">
+                <p class="about"> <b>About:</b> {{ form.about(placeholder=current_user.about ) }} </p>
+            </div>
+            <p class="email"> <b>Email:</b> {{ form.email(placeholder=current_user.email) }}</p>
+
+            <p class="offers-label"> <b> Your Offers List </b> </p>
+
+            <div class="tags-list user-tags">
+                <!-- During the edition tags will be disabled -->
+            </div>
+
+            {{ form.password(placeholder=form.password.label.text, class="password-label") }}
+            {{ form.repeat_password(placeholder=form.repeat_password.label.text, class="password-label password-a") }}
+        </div>
+    </form>
+
+{% endblock %}

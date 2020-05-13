@@ -1,0 +1,327 @@
+/*
+    1. Header
+    2. Login&Register (page)
+    3. Search (page)
+        3.1 Search wrap
+        3.2 Map wrap
+    4. Profile (page)
+    5. Offer page
+    6. Helpers
+*/
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background-color: #231F20;
+    color: #FFF;
+    overflow: hidden;
+}
+
+
+/* 1. Header */
+#navbar-p{ margin: 0 0 0 0; }
+
+#login-btn{ border-color: #FF8C00; }
+
+#login-btn:hover{ background-color: #FF8C00; }
+
+
+
+/* 2. Login&Register (page) */
+.btn.text-uppercase{ background-color: #F1F2F2; }
+
+.btn.text-uppercase:hover{ background-color: #FF8C00; }
+
+.login-form{ margin-top: 10vh; }
+
+
+
+/* 3. Search (page) */
+/* 3.1 Search wrap */
+.form-wrap{
+    position: absolute;
+    top: 20vh;
+    left: 15vw;
+
+    font-family: 'GOST Type BU';
+    background: #FFF;
+    border-radius: 25px;
+    color: #000;
+
+    width: 16vw;
+    height: 200px;
+}
+
+.search-box{
+    position: absolute;
+    margin-left: 2vw;
+    margin-top: 10vh;
+
+    border-radius: 40px;
+    background: #d0d0d0;
+
+    height: 40px;
+}
+
+.search-btn{
+    border: none;
+    float: right;
+    border-radius: 50%;
+    background: #2f3640;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 40px;
+    height: 40px;
+}
+
+.search-txt{
+    margin-top: 8px;
+    margin-left: 5px;
+    padding: 0;
+
+    border: none;
+    background: none;
+    outline: none;
+    float: left;
+    font-size: 16px;
+}
+
+.advanced-box{
+    position: absolute;
+    margin-left: 2vw;
+    margin-top: 17vh;
+}
+
+.checkbox-label{
+    position: relative;
+    margin-top: 6px;
+    margin-left: 10px;
+    float: right;
+    display: block;
+
+    width: 13px;
+    height: 13px;
+}
+
+.advanced-parameters{ visibility: collapse; }
+
+.lonlat-txt{
+    position: absolute;
+    margin-left: 8vw;
+    margin-top: 20vh;
+    float: left;
+    padding-left: 10px;
+
+    border: none;
+    border-radius: 40px;
+    outline: none;
+    background: #d0d0d0;
+    font-size: 16px;
+
+    height: 25px;
+    width: 100px;
+}
+
+#adv-checkbox + span{
+    position: absolute;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background: url(icons/icon.png) no-repeat;
+}
+
+#adv-checkbox:checked + span{ background: url(icons/active_icon.png) no-repeat; }
+
+#adv-checkbox{ display: none; }
+
+#advanced{ float: left; }
+
+#advanced-lonlat{
+    position: absolute;
+    margin-left: 5vw;
+    margin-top: 20vh;
+}
+
+#search-label{
+    position: absolute;
+    margin-left: 2vw;
+    margin-top: 3vh;
+
+    font-size: 25pt;
+}
+
+
+/* 3.2 Map wrap */
+.map-picture{
+    position: absolute;
+    top: 20px;
+    left: 440px;
+
+    border-radius: 20px;
+    border-color: #000;
+
+    height: 450px;
+    width: 600px;
+}
+
+.map-wrap{
+    position: absolute;
+    top: 20vh;
+    left: 33vw;
+
+    /* like in form-wrap */
+    font-family: 'GOST Type BU';
+    background: #FFF;
+    border-radius: 40px;
+    color: #000;
+
+    width: 1060px;
+    height: 644px;
+}
+
+.map-legend{
+    position: absolute;
+    top: 500px;
+    left: 440px;
+}
+
+.tags-list{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+
+    overflow-x: auto;
+    background: #d0d0d0;
+    border: 2px solid #231F20;
+    border-radius: 20px;
+
+    width: 400px;
+    height: 600px;
+}
+
+.tag-info{
+    position: relative;
+
+    background: #FFF;
+    border: 1px solid #231F20;
+}
+
+.tag-title{
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.tag-description{ margin-left: 15px; }
+
+
+/* 4. Profile (page) */
+.profile-info{
+    position: absolute;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+
+    font-family: 'GOST Type BU';
+    background: #FFF;
+    border-radius: 25px;
+    color: #000;
+
+    width: 960px;
+    height: 700px;
+}
+
+.username-label{
+    position: absolute;
+    left: 320px;
+    font-size: 30pt;
+}
+
+.edit-btn{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+
+    width: 100px;
+}
+
+.profile-img{
+    position: absolute;
+    left: 160px;
+    top: 25px;
+    transform: translate(-50%, 0);
+
+    width: 200px;
+    height: 200px;
+
+    border-radius: 50%;
+}
+
+.about-wrap{
+    position: absolute;
+    top: 150px;
+    left: 320px;
+
+    x-overflow: auto;
+}
+
+.email{
+    position: absolute;
+    top: 120px;
+    left: 320px;
+}
+
+.offers-label{
+    position: absolute;
+    top: 250px;
+    left: 60px;
+
+    font-size: 15pt;
+}
+
+.user-tags{
+    position: absolute;
+    top: 300px;
+    left: 60px;
+
+    border-radius: 20px;
+
+    width: 840px;
+    height: 375px;
+}
+
+.username-placeholder{ width: 150px; }
+
+.error-message{ color: #FFF; }
+
+.password-label{
+    position: absolute;
+    top: 190px;
+    left: 320px;
+}
+
+.password-a{
+    top: 230px;
+}
+
+/* 5. Offer page */
+.lon{ top: 80px; }
+
+.lat{ top: 115px; }
+
+.owner{ font-size: 15pt; }
+
+.owner-info{
+    position: absolute;
+    top: 250px;
+    left: 60px;
+}
+
+/* 6. Helpers */
+.right-center{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.w-200{ width: 200px; }

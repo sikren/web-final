@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="profile-info">
+        <p class="username-label"> Offer: {{ offer.title }} </p>
+
+        {% if current_user.id == offer.user_id %}
+            <a href="/edit_offer" class="btn btn-dark edit-btn"> Edit </a>
+        {% endif %}
+
+        <img class="profile-img" src="{{ url_for('static', filename='img/job-icon.jpg') }}">
+
+        <p class="email lon"> <b>lon:</b> {{ offer.lon }} </p>
+        <p class="email lat"> <b>lat:</b> {{ offer.lat }} </p>
+
+        <div class="about-wrap">
+            <p class="about"> <b>Description:</b> {{ offer.description }} </p>
+        </div>
+
+        <div class="owner-info">
+            <p class="owner"> Owner: {{ offer.user.username }} </p>
+        </div>
+
+
+    </div>
+
+{% endblock %}

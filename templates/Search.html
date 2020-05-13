@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="form-wrap">
+        <form class="search-form" method="post" action="">
+
+            {{ form.hidden_tag() }}
+            {{ form.csrf_token }}
+
+            <div id="search-label">
+                Search
+            </div>
+            <div class="search-box">
+                {{ form.offer_name(class="search-txt",
+                                   placeholder=form.offer_name.label.text,
+                                   type="text")}}
+                <button class="search-btn" onclick="process(3)"> <i class="fas fa-search-location" style="color: #FF8C00;"></i> </button>
+            </div>
+            <div class="advanced-box">
+                <label for="adv-checkbox" id="advanced"> advanced </label>
+                <label class="checkbox-label">{{ form.advanced_checkbox(id="adv-checkbox") }}<span></span></label>
+            </div>
+            <div class="advanced-parameters">
+                <label id="advanced-lonlat"> lonlat: </label>
+                {{ form.lonlat(class="lonlat-txt", placeholder="lon;lat") }}
+            </div>
+        </form>
+    </div>
+
+    {% if map_url != None %}
+        <div class="map-wrap">
+            <img class="map-picture" src="{{map_url}}" >
+
+            {% if tags != None %}
+                <div class="tags-list">
+                    {% if tags[0] | length > 0 %}
+                        <h4 align="center"> Tags for your request </h4>
+                    {% endif %}
+                    {% for tag in tags[0] %}
+                        <div class="tag-info col-md6 border rounded">
+                            <h2 class="tag-title"> {{ loop.index }}. {{ tag.title }} </h2>
+                            {% if tag.description != None %}
+                                <div class="tag-description">
+                                    Info: {{ tag.description }}
+                                </div>
+                            {% endif %}
+                            <a class="btn btn-dark right-center" href="offer/{{ tag.id }}"> GO TO </a>
+                        </div>
+                    {% endfor %}
+
+                    {% if tags[1] | length > 0 %}
+                        <h4 align="center"> Other Tags </h4>
+                    {% endif %}
+
+                    {% for tag in tags[1] %}
+                        <div class="tag-info col-md6 border rounded">
+                            <h2 class="tag-title"> {{ loop.index + tags[0] | length }}. {{ tag.title }} </h2>
+                            {% if tag.description != None %}
+                                <div class="tag-description">
+                                    Info: {{ tag.description }}
+                                </div>
+                            {% endif %}
+                            <a class="btn btn-dark right-center" href="offer/{{ tag.id }}"> GO TO </a>
+                        </div>
+                    {% endfor %}
+
+                </div>
+            {% endif %}
+
+            <div class="map-legend">
+                <p> <img src="{{url_for('static', filename='img/required_tag.png')}}"> - Tags, corresponding to the request </p>
+                <p> <img src="{{url_for('static', filename='img/other_tag.png')}}"> - Other tags </p>
+            </div>
+        </div>
+    {% endif %}
+
+    <script type="text/javascript">
+        $('#adv-checkbox').change(function() {
+            if ($('#adv-checkbox').is(':checked')){
+                $('.advanced-parameters').css({'visibility': 'visible'});
+                $('.form-wrap').css({'height': '500px'});
+            } else {
+                $('.advanced-parameters').css({'visibility': 'collapse'});
+                $('.form-wrap').css({'height': '200px'});
+            }
+        });
+    </script>
+{% endblock %}

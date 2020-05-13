@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form method="post" action="">
+
+        {{ form.hidden_tag() }}
+        {{ form.csrf_token }}
+
+        <div class="profile-info">
+            <p class="username-label"> Offer: {{ form.title(class="username-placeholder w-200", placeholder="Title") }} </p>
+
+            <button type="submit" class="btn btn-dark edit-btn"> Create </button>
+
+            <img class="profile-img" src="{{ url_for('static', filename='img/job-icon.jpg') }}">
+
+            <p class="email lon"> <b>lon:</b> {{ form.lon }} </p>
+            <p class="email lat"> <b>lat:</b> {{ form.lat }} </p>
+
+            <div class="about-wrap">
+                <p class="about"> <b>Description:</b> {{ form.description }} </p>
+            </div>
+
+            <div class="owner-info">
+                <p class="owner"> <b> Owner: </b> {{ current_user.username }} (You) </p>
+            </div>
+        </div>
+    </form>
+
+{% endblock %}
